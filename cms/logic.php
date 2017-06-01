@@ -82,8 +82,9 @@ if(isset($mod) && $mod=='works'){
 //*********** /Языки и еже с ними *********//
 
 $tpl = new AdmTpl;
-
-$tpl->assign('main_menu', $main_menu);
+if(isset($main_menu)){
+    $tpl->assign('main_menu', $main_menu);
+}
 if(isset($c_cont)){
     $tpl->assign('c_cont', $c_cont);
 }        
