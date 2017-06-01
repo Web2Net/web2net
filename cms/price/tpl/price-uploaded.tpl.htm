@@ -1,0 +1,16 @@
+<?
+$count = count($change_price);
+if($count > 0){?>
+<h2>Добавлено <?=$count?> позиций</h2>
+<?foreach($change_price as $k=>$val){?>
+<div><?=$val?></div>
+<?}?>
+<?}else{?>
+<h2>Новых товаров нет(</h2>
+<?}?>
+
+<div>
+<?var_dump($change_price);?>
+<hr />
+<?var_dump($in);?>
+</div>
