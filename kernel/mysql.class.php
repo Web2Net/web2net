@@ -1,16 +1,26 @@
 <?php
 $GLOBALS["SQL_DEBUG"]="";
-$db = mysql_connect(DB_HOST, DB_USER, DB_PASS) or die("Подключение к базе данных не состоялось!"); 
-//var_dump($db);
-mysql_select_db(DB_NAME,$db);
-//mysql_query("SET NAMES latin1");
-mysql_query("SET NAMES utf8");
+ $db = mysql_connect(DB_HOST, DB_USER, DB_PASS) or die("Подключение к базе данных не состоялось!"); 
+// //var_dump($db);
+ mysql_select_db(DB_NAME,$db);
+// //mysql_query("SET NAMES latin1");
+ mysql_query("SET NAMES utf8");
+
+// try {
+//   $db = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME."", DB_USER, DB_PASS);
+//   $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//   $db->exec("set names utf8");
+// }
+// catch(PDOException $e) {
+//     echo $e->getMessage();
+// }
+
 
 class mysql
 {
 
 	var $table;
-    var $prefix="";
+        var $prefix="";
 
 	function put_error ($msg)
 	{

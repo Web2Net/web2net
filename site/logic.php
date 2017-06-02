@@ -20,6 +20,7 @@ include_once (SITE_PATH."/mandatory/shopSetting.mandatory.mod.php");
 // Установки магазина
 mandatoryShopSetting::mandatoryElements(); // Обязательные настройки магазина. Курс валют, мин сумма доставки, название сайта, адреса, телефоны и прочая инфа
 // /Установки магазина
+
 include_once ("lang/lang.class.php");
 include_once ("setting/setting.class.php");
 
