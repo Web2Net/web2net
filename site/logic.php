@@ -196,9 +196,13 @@ else
 
     $tpl = new SiteTpl;
 
+  $main_menu = Main::siteMainMenu();
+  SYS::varDump($main_menu,__FILE__,__LINE__,' main_menu');
+  
   $shop_menu=Shop::siteShopMenu();
-  SYS::varDump($shop_menu,__FILE__,__LINE__,' shop_menu'); 
-    
+  SYS::varDump($shop_menu,__FILE__,__LINE__,' shop_menu');
+  
+$tpl->assign('main_menu', $main_menu);    
 $tpl->assign('shop_menu', $shop_menu);
 $tpl->assign('c_cont', $c_cont["content"]);
 $tpl->assign('meta', $c_cont["meta"]);
