@@ -1,5 +1,5 @@
 <?php
-define('ART_ITEM_TABLE','art_item');
+if(ART_ITEM_TABLE === NULL){define('ART_ITEM_TABLE','art_item');}
 define('ART_ITEM_TABLE_LANG','art_item_'.$_SESSION['lang']);
 define('ART_TAG_TABLE','art_tag');
 define('ART_TAG_TABLE_LANG','art_tag_'.$_SESSION['lang']);
@@ -85,34 +85,27 @@ $c_cont["meta"]["keywords"]=META_K_DEFAULT;
 return $c_cont;
 }
 
-public function siteMainMenu(){
-      $query = "SELECT * FROM ".ART_TAG_TABLE." 
-                  LEFT JOIN ".ART_TAG_TABLE_LANG." ON ".ART_TAG_TABLE.".id=".ART_TAG_TABLE_LANG.".pid 
-                  WHERE `showing`='1' ORDER BY `pos`";
-        $res = mysql_query($query);
-        Mysql::queryError($res,$query);
-    
-	    if (mysql_num_rows($res) > 0){
-		    while ($result = mysql_fetch_assoc ($res)){
-		        $result["caption"]=stripslashes($result["caption"]);
-	            $result["desc_short"]=stripslashes($result["desc_short"]);
-	            $result["desc_full"]=stripslashes($result["desc_full"]);
-	            $result["meta_t"]=stripslashes($result["meta_t"]);
-	            $result["meta_d"]=stripslashes($result["meta_d"]);
-	            $result["meta_k"]=stripslashes($result["meta_k"]);
-	
-		        $itog[] = $result;
-		    }
-		}
-		
-            if($itog!=NULL){
-              foreach($itog as $key=>$val){
-                  $arrcat[$val["id"]]=$val;
-              }
-            }
-SYS::varDump($arrcat,__FILE__,__LINE__,' MAIN_MENU');
-            return $arrcat;
-        }
+
+
+    public function siteMainMenu(){
+     
+        $tpl=new SiteMainTpl;
+
+        $tag0_list=Shop::tagListShowLevel('0');
+        $tag1_list=Shop::tagListShowLevel('1');
+        $tag2_list=Shop::tagListShowLevel('2');
+
+//include_once("tagzero.multilang.php");
+//SYS::varDump($tag0_list,__FILE__,__LINE__,"tag0_list");
+
+        $tpl->assign('tag0_list',$tag0_list);
+        $tpl->assign('tag1_list',$tag1_list);
+        $tpl->assign('tag2_list',$tag2_list);
+
+        $main_menu=$tpl->get("main-menu");
+
+        return $main_menu; 
+    }
 
         
         
