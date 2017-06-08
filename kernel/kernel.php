@@ -1,7 +1,6 @@
 <?php
 	
 include_once ("cfg.php");
-include_once ("error.class.php");
 include ("sys.util.php");
 include ("ini.util.php");		
 include ("time.util.php");
@@ -10,7 +9,7 @@ include ("gd.util.php");
 include_once ("mysql.class.php");
 include ("template.class.php");
 include ("email.class.php");
-
+include ("dir.class.php");
 
 class SiteTpl extends Tpl
 {
@@ -35,5 +34,5 @@ class AdmTpl extends Tpl
 }
 
 //SYS::varDump($GLOBALS,__FILE__,__LINE__,"GLOBALS");
-//new errorHandler();
+
 ?>
